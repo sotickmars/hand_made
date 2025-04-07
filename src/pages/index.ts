@@ -1,5 +1,3 @@
-export * from './Dashboard';
+export * from '../components/RootContainer';
 export * from './Settings';
 export * from './CounterRTK';
-export * from './DNDKit';
-export * from './Pixi';

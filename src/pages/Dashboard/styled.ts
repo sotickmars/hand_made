@@ -1,12 +1,6 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
-export const DashboardContainer = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-`;
-export const Main = styled.main`
-  display: flex;
-  height: 100%;
+export const SettingsContainer = styled.div`
+  color: #000fff;
+  margin: 0;
 `;

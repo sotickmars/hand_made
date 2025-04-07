@@ -1,26 +1,54 @@
 import React from 'react';
 import * as S from './styled';
-import { Link } from 'react-router-dom';
 import { RouterPath } from '../../enums/routers';
+import {
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
+import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 
-export const Sidebar: React.FC = () => {
+type Sidebar = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const NavLinksData = [
+  {
+    url: RouterPath.Root,
+    title: 'Dashboard',
+    icon: <DashboardIcon color="inherit" />,
+  },
+  {
+    url: RouterPath.CounterRTK,
+    title: 'Store',
+    icon: <ReportGmailerrorredIcon color="inherit" />,
+  },
+  {
+    url: RouterPath.Settings,
+    title: 'Settings',
+    icon: <SettingsApplicationsIcon color="inherit" />,
+  },
+];
+
+export const Sidebar: React.FC<Sidebar> = ({ isOpen }) => {
   return (
-    <S.Sidebar>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to={RouterPath.Settings}>SETTINGS</Link>
-      </li>
-      <li>
-        <Link to={RouterPath.DNDKit}>dnd-kit</Link>
-      </li>
-      <li>
-        <Link to={RouterPath.CounterRTK}>Redux Toolkit Counter</Link>
-      </li>
-      <li>
-        <Link to={RouterPath.PixiRout}>Pixi</Link>
-      </li>
-    </S.Sidebar>
+    <S.Drawer variant="persistent" anchor="left" open={true} $isOpen={isOpen}>
+      <S.List>
+        {NavLinksData.map(({ url, title, icon }) => (
+          <ListItem key={url} disablePadding>
+            <S.NavLink to={url}>
+              <ListItemButton>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={title} />
+              </ListItemButton>
+            </S.NavLink>
+          </ListItem>
+        ))}
+      </S.List>
+    </S.Drawer>
   );
 };

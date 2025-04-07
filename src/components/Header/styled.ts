@@ -1,7 +1,16 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import { AppBar as AppBarMui } from '@mui/material';
 
 export const Header = styled.header`
-  background: #000000;
   color: #ffffff;
-  padding: 20px;
+`;
+
+export const AppBar = styled(AppBarMui)`
+  background: ${({ theme }) => theme.colors.background.extraLightPrimary};
+  box-shadow: none;
+  padding: 0;
+  .MuiToolbar-root {
+    padding: 0 15px;
+    min-height: auto;
+  }
 `;
